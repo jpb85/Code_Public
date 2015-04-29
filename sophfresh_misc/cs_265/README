@@ -1,0 +1,5 @@
+My program creates the text file that can be plotted using-
+
+gnuplot < plot-instructions
+
+and this will create plot.png. That is the required plot.

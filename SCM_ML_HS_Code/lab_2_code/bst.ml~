@@ -1,0 +1,37 @@
+datatype btree =
+  Empty |
+  Node of int * btree * btree;
+
+
+   fun bstInsert (x, Empty) = Node(x, Empty, Empty)
+   |   bstInsert (x, Node(y, left, right) ) =
+          if x<y then Node(y, bstInsert(x,left), right)
+          else Node(y, left, bstInsert(x, right) );
+
+
+   fun inBst (x, Empty) = false
+   |   inBst (x, Node(y, left, right) ) =
+          if x=y then true
+          else if x<y then inBst(x, left)
+          else inBst(x, right);
+
+
+exception Empty_btree;
+
+  (* function root: return the root of a nonempty btree *)
+      fun root (Empty ) = raise Empty_btree
+      |   root (Node(x, right,left)) = x;
+
+  (* function left: return the left subtree of a nonempty btree *)
+      fun left(Empty) = raise Empty_btree
+      |   left(Node(x, left, right)) = left;
+
+  (* function right: return the right subtree of a nonempty btree *)
+      fun right(Empty) = raise Empty_btree
+      |   right(Node(x,left,right)) = right;
+
+
+(* function first: return the first (smallest) value in a nonempty BST *)
+   fun first(t:btree) =
+       if left(t)=Empty then root(t)
+		else first(left(t));
