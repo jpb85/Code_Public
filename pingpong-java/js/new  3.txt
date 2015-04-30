@@ -1,0 +1,73 @@
+function collides(b, p) {
+ // Check collision of ball with one paddle
+ if (b.y + b.r >= p.y && b.y - b.r <= p.y + p.h) {
+  if (b.x >= (p.x - p.w) && p.x > 0){
+   //console.log ("paddle hit right");
+   paddleHit = 0;
+            ball.c = "orange";
+   return true;
+  } else if (b.x <= p.w && p.x === 0) {
+   //console.log ("paddle hit left");
+   paddleHit = 1;
+            ball.c = "#9B30FF";            
+   return true;
+  }
+ } else {
+  return false;
+ }
+}
+
+function collideAction(b, p) {
+    collision.play();
+ b.vx = -b.vx;
+ if (paddleHit == 0) {
+  b.y = p.y - p.h;
+        particleDir = -1;
+        particlePos.y = ball.y + ball.r;
+ } else if (paddleHit == 1) {
+  b.y = p.h + b.r;
+        particleDir = 1;
+        particlePos.y = ball.y - ball.r;
+ }
+    particlePos.x = ball.x;
+    flagCollision = true;
+}
+
+
+
+
+
+function collides(b, p) {
+ // Check collision of ball with one paddle
+ if (b.y + b.r >= p.y && b.y - b.r <= p.y + p.h) {
+  if (b.x >= (p.x - p.w) && p.x > 0){
+   //console.log ("paddle hit right");
+   paddleHit = 0;
+            ball.c = "orange";
+   return true;
+  } else if (b.x <= p.w && p.x === 0) {
+   //console.log ("paddle hit left");
+   paddleHit = 1;
+            ball.c = "#9B30FF";            
+   return true;
+  }
+ } else {
+  return false;
+ }
+}
+
+function collideAction(b, p) {
+    collision.play();
+ b.vx = -b.vx;
+ if (paddleHit == 0) {
+  b.y = p.y - p.h;
+        particleDir = -1;
+        particlePos.y = ball.y + ball.r;
+ } else if (paddleHit == 1) {
+  b.y = p.h + b.r;
+        particleDir = 1;
+        particlePos.y = ball.y - ball.r;
+ }
+    particlePos.x = ball.x;
+    flagCollision = true;
+}
